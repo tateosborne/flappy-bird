@@ -1,6 +1,9 @@
 
-# constants
+## Constants
 
+# colours
 WHITE = (255, 255, 255)
 
-DIMENSIONS = [800, 800]
+# window display
+DIMENSIONS = [640, 1136]
+FPS = 60
