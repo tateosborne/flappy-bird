@@ -16,6 +16,7 @@ def main():
   sprites = {}
   sprites["background_day"] = pygame.image.load(const.BG_DAY)
   sprites["background_night"] = pygame.image.load(const.BG_NIGHT)
+  sprites["grass"] = pygame.image.load(const.GRASS)
   sprites["yellow_bird_down"] = pygame.image.load(const.Y_DOWN_FLAP)
   sprites["yellow_bird_mid"] = pygame.image.load(const.Y_MID_FLAP)
   sprites["yellow_bird_up"] = pygame.image.load(const.Y_UP_FLAP)
@@ -29,13 +30,13 @@ def main():
   resized_sprites = sprhelp.resize(sprite_sizes)
   
   # resize each sprite according to  in the dictionary
-  sprites["background_day"] = pygame.transform.scale(sprites["background_day"], resized_sprites["background_day"])
-  sprites["background_night"] = pygame.transform.scale(sprites["background_night"], resized_sprites["background_night"])
-  sprites["yellow_bird_down"] = pygame.transform.scale(sprites["yellow_bird_down"], resized_sprites["yellow_bird_down"])
-  sprites["yellow_bird_mid"] = pygame.transform.scale(sprites["yellow_bird_mid"], resized_sprites["yellow_bird_mid"])
-  sprites["yellow_bird_up"] = pygame.transform.scale(sprites["yellow_bird_up"], resized_sprites["yellow_bird_up"])
+  for key in sprites:
+    sprites[key] = pygame.transform.scale(sprites[key], resized_sprites[key])
   
+  # create bird object for the player
   bird = Bird(const.CENTRE, sprites, sprites["yellow_bird_mid"])
+  
+  grass_loc = [0, 600]
   
   # flag `running` boolean to true to enter game loop
   running = True 
@@ -55,14 +56,19 @@ def main():
         if event.key == pygame.K_ESCAPE:
           running = False
         
-        if event.key == pygame.K_SPACE:
+        if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
           bird.flap()
         
     # blit background image onto screen
-    screen.blit(sprites["background_day"], (0,0))
+    screen.blit(sprites["background_day"], (0, 0))
     
     # blit bird image onto screen
     screen.blit(bird.displayed, (bird.x, bird.y))
+    
+    # blit ground onto screen
+    screen.blit(sprites["grass"], grass_loc)
+    
+    grass_loc = sprhelp.move_grass(grass_loc)
     
     # flip the display
     pygame.display.flip()

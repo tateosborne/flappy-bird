@@ -1,5 +1,4 @@
 
-
 #############
 # CONSTANTS #
 #############
@@ -13,11 +12,12 @@ WHITE = (255, 255, 255)
 # pygame constants
 DIMENSIONS = (428, 765)
 CENTRE = (114, 382)
-FPS = 60
+FPS = 30
 
 # file paths
 BG_DAY = "sprites/background-day.png"
 BG_NIGHT = "sprites/background-night.png"
+GRASS = "sprites/base.png"  # TODO: sprite is 75 pixels wider than width of the screen
 B_DOWN_FLAP = "sprites/bluebird-downflap.png"
 B_MID_FLAP = "sprites/bluebird-midflap.png"
 B_UP_FLAP = "sprites/bluebird-upflap.png"

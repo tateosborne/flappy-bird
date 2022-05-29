@@ -3,7 +3,6 @@
 # HELPER FUNCTIONS FOR SPRITES #
 ################################
 
-from xml.etree import ElementTree
 import pygame
 
 def resize(sprites):
@@ -18,3 +17,11 @@ def resize(sprites):
     resized_sprites[key] = new_size
   
   return resized_sprites
+
+def move_grass(grass_loc):
+  if grass_loc[0] > -75:
+    grass_loc[0] -= 3
+  else:
+    grass_loc[0] = 0
+  
+  return grass_loc
