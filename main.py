@@ -1,6 +1,6 @@
 import pygame
 import sys
-import bird
+from bird import Bird
 import constants as const
 import sprite_helper as sprhelp
 
@@ -30,13 +30,12 @@ def main():
   
   # resize each sprite according to  in the dictionary
   sprites["background_day"] = pygame.transform.scale(sprites["background_day"], resized_sprites["background_day"])
-  sprites["background_night"] = pygame.transform.scale(sprites["background_night"], resized_sprites["background_day"])
-  # sprites["yellow_bird_down"] = pygame.image.load(sprites["yellow_bird_down"], )
-  # sprites["yellow_bird_mid"] = pygame.image.load(sprites["yellow_bird_mid"], )
-  # sprites["yellow_bird_up"] = pygame.image.load(sprites["yellow_bird_up"], )
+  sprites["background_night"] = pygame.transform.scale(sprites["background_night"], resized_sprites["background_night"])
+  sprites["yellow_bird_down"] = pygame.transform.scale(sprites["yellow_bird_down"], resized_sprites["yellow_bird_down"])
+  sprites["yellow_bird_mid"] = pygame.transform.scale(sprites["yellow_bird_mid"], resized_sprites["yellow_bird_mid"])
+  sprites["yellow_bird_up"] = pygame.transform.scale(sprites["yellow_bird_up"], resized_sprites["yellow_bird_up"])
   
-  # TODO: create bird object, which will be the player
-  
+  bird = Bird(const.CENTRE, sprites, sprites["yellow_bird_mid"])
   
   # flag `running` boolean to true to enter game loop
   running = True 
@@ -57,10 +56,13 @@ def main():
           running = False
         
         if event.key == pygame.K_SPACE:
-          pass
+          bird.flap()
         
     # blit background image onto screen
     screen.blit(sprites["background_day"], (0,0))
+    
+    # blit bird image onto screen
+    screen.blit(bird.displayed, (bird.x, bird.y))
     
     # flip the display
     pygame.display.flip()

@@ -3,14 +3,16 @@
 #############
 # CONSTANTS #
 #############
-
-# TODO: note that I will scale sprites up by 1.5x their original size.
+# ---
+# note that I will scale sprites up by 1.5x their original size.
+# ---
 
 # colours
 WHITE = (255, 255, 255)
 
-# window display
+# pygame constants
 DIMENSIONS = (428, 765)
+CENTRE = (114, 382)
 FPS = 60
 
 # file paths
