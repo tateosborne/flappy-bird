@@ -9,10 +9,11 @@
 # colours
 WHITE = (255, 255, 255)
 
-# pygame constants
+# game constants
 DIMENSIONS = (428, 765)
 CENTRE = (114, 382)
 FPS = 30
+PIPE_GAP = 100
 
 # file paths
 BG_DAY = "sprites/background-day.png"
