@@ -58,6 +58,8 @@ def main():
         
         if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
           bird.flap()
+          
+    bird.gravity()
         
     # blit background image onto screen
     screen.blit(sprites["background_day"], (0, 0))
@@ -68,6 +70,7 @@ def main():
     # blit ground onto screen
     screen.blit(sprites["grass"], grass_loc)
     
+    # move the grass to the left (to indicate movement)
     grass_loc = sprhelp.move_grass(grass_loc)
     
     # flip the display

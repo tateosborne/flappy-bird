@@ -16,4 +16,8 @@ class Bird():
     
   def flap(self):
     self.y -= 25
+    
+  def gravity(self):
+    if self.y < 565:
+      self.y += 1
   
